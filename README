@@ -1,0 +1,4 @@
+1. Install dependencies from Dependencies.txt using 
+    pip install -r Dependencies.txt
+2. Download Tesseract OCR from "https://github.com/tesseract-ocr/tesseract/releases" (You will need it LOCALLY on your system for OCR)
+3. 
