@@ -20,17 +20,17 @@ def preprocess_image(img):
     gray = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2GRAY)
     _, binary = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY_INV)
     coords = np.column_stack(np.where(binary > 0))
-    '''angle = cv2.minAreaRect(coords)[-1]
+    angle = cv2.minAreaRect(coords)[-1]
     if angle < -45:
         angle = -(90 + angle)
     else:
-        #angle = -angle'''
+        #angle = -angle
     (h, w) = gray.shape[:2]
     center = (w // 2, h // 2)
     M = cv2.getRotationMatrix2D(center, angle, 1.0)
     rotated = cv2.warpAffine(gray, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
     
-    try:
+    try: #because Tessearct don't understand Orientation
         # Detect text orientation using Tesseract
         osd = pytesseract.image_to_osd(rotated)
         rotate_angle = int(re.search(r"Rotate: (\d+)", osd).group(1))
@@ -46,7 +46,6 @@ def preprocess_image(img):
         # Fallback to assuming image is in the correct orientation
         pass
     
-    # Optional: Sharpen the image to improve clarity
     kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
     sharpened = cv2.filter2D(rotated, -1, kernel)
 
@@ -66,28 +65,21 @@ def extract_text_from_pdf(pdf_path):
     return full_text
 
 def process_folder(folder_path):
-    # Extract the base folder name and create an output folder with "_output" suffix
     base_folder_name = os.path.basename(folder_path.rstrip("\\/"))  # Get the name of the folder
     output_folder = os.path.join(os.path.dirname(folder_path), f"{base_folder_name}_output")
     
-    # Create the output folder if it doesn't exist
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     
-    # Iterate through all files in the folder
     for filename in os.listdir(folder_path):
         if filename.endswith(".pdf"):
             pdf_path = os.path.join(folder_path, filename)
             print(f"Processing {pdf_path}...")
-            
-            # Extract text from the PDF
             text = extract_text_from_pdf(pdf_path)
             
-            # Generate output .txt file path in the new output folder
-            base_name = os.path.splitext(filename)[0]  # Base name without .pdf extension
+            base_name = os.path.splitext(filename)[0] 
             output_file_path = os.path.join(output_folder, f"{base_name}.txt")
             
-            # Write the extracted text to the .txt file in the output folder
             with open(output_file_path, 'w', encoding='utf-8') as file:
                 file.write(text)
             print(f"Text has been extracted and saved to {output_file_path}")
