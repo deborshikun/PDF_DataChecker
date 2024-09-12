@@ -2,7 +2,8 @@
 ### Trying to Extract Data from not-so-perfect PDF's
 
 ## About
-### A little project dealing with information retreival from PDF documents. For the time being I am only dealing with 1 pdf at a time, but doing a batch procedure would be lovely. 
+### A little project dealing with information retreival from PDF documents.
+For the time being I am only dealing with a single pdf at a time, eventually using this model for a batch procedure. 
 
 ## Installation 
 ### 1. Dependencies
