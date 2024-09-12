@@ -3,6 +3,7 @@ from PIL import Image
 import cv2
 import numpy as np
 import pytesseract
+import os
 
 def pdf_to_images(pdf_path):
     doc = fitz.open(pdf_path) 
@@ -53,4 +54,13 @@ def extract_text_from_pdf(pdf_path):
 pdf_path = r"C:\CERTIFICATES\03ecfa6c-d205-40b6-a690-e8c939ad32c7.pdf"
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe' #explicit PATH declaration
 text = extract_text_from_pdf(pdf_path)  
-print(text)
+
+# Extract the base name of the PDFs
+base_name = os.path.splitext(os.path.basename(pdf_path))[0]
+output_file_path = os.path.join(os.path.dirname(pdf_path), f"{base_name}.txt")
+
+# Write the extracted text to a file in the same file (for the time being)
+with open(output_file_path, 'w', encoding='utf-8') as file:
+    file.write(text)
+print(f"Text has been extracted and saved to {output_file_path}")
+
