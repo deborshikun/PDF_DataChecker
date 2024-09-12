@@ -51,5 +51,6 @@ def extract_text_from_pdf(pdf_path):
 
 # Example usage
 pdf_path = r"C:\CERTIFICATES\03ecfa6c-d205-40b6-a690-e8c939ad32c7.pdf"
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe' #explicit PATH declaration
 text = extract_text_from_pdf(pdf_path)  
 print(text)
