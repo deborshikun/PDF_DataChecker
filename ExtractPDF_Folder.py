@@ -24,7 +24,7 @@ def preprocess_image(img):
     if angle < -45:
         angle = -(90 + angle)
     else:
-        #angle = -angle
+        angle = -angle
     (h, w) = gray.shape[:2]
     center = (w // 2, h // 2)
     M = cv2.getRotationMatrix2D(center, angle, 1.0)
