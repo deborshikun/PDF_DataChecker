@@ -2,4 +2,5 @@
     pip install -r Dependencies.txt
 2. Download Tesseract OCR from "https://github.com/tesseract-ocr/tesseract/releases" (You will need it LOCALLY on your system for OCR)
 2a. You can get the Windows Installer from "https://github.com/UB-Mannheim/tesseract/wiki"
-3. 
+3. Enter the path to your pdf in "pdf_path" in outside declaration.
+4. Add your Tesseract location to you PATH, or add your Tesseract PATH implicitly in the declared field
