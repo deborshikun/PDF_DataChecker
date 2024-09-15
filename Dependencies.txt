@@ -2,3 +2,4 @@ pymupdf
 opencv-python 
 pytesseract 
 pillow
+groq
