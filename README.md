@@ -1,21 +1,25 @@
-# ExtractPDF
-### Trying to Extract Data from not-so-perfect PDFs
+#PDF_DataChecker
+### We want to create a data extractor and checker from PDF with a local database (mostly Excel in this case).
+-------------------------------------------------
+
+## ExtractPDF
+#### Trying to Extract Data from not-so-perfect PDFs
 
 ## About
-### A little project dealing with information retrieval from PDF documents.
+#### A little project dealing with information retrieval from PDF documents.
 For the time being, I am only dealing with a single pdf at a time, eventually using this model for a batch procedure. I will upload all the major iteration changes I go through!
 My actual motive is to be able to extract marks from mark sheets taken by students. These mark sheets might be taken in various orientations and could involve many real-world problems.
 
 ## Installation 
-### 1. Dependencies
+#### 1. Dependencies
 Install Dependencies using 
 ```pip install -r Dependencies.txt```
 
-### 2. Download Tesseract OCR 
+#### 2. Download Tesseract OCR 
 Use the *https://github.com/tesseract-ocr/tesseract/releases* repository (You will need it LOCALLY on your system for OCR).
 You can get the Windows Installer from *https://github.com/UB-Mannheim/tesseract/wiki* directly.
 
-### 3. PATH
+#### 3. PATH
 Enter the path to your pdf in ```pdf_path``` in the declaration outside.
 Add your Tesseract location to your PATH, or add your Tesseract PATH implicitly in the declared field.
 
@@ -39,7 +43,7 @@ Output:
 
 Not too great right?
 
-### 4. Groq
+#### 4. Groq
 Now before I started the project, I was convinced I could (obviously with the help of Github and Stackoverflow) get the PDF OCR running after using Tesseract. 
 I couldn't have possibly been more incorrect.
 Someone suggested I try using AI, and well API keys don't come cheap. 
@@ -59,7 +63,7 @@ This is where I hit a brick wall, as even with Groq the error bound was quite su
 
 I had to change my approach to the OCR itself.
 
-### 5. Google Cloud Vision API
+#### 5. Google Cloud Vision API
 The strongest tool available to us - Google Cloud Vision API. This is famously used in image detection, mainly in Google Lens. So I had to give it a shot.
 as always, you can read the documentation and the guides over at *https://cloud.google.com/vision/docs/how-to*.
 
@@ -82,7 +86,7 @@ With this, I conclude the "ExtractPDF" portion.
 
 -------------------------------------------------
 
-# ExcelMatching
+## ExcelMatching
 
 (still working on this hold on)
 
