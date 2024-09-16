@@ -4,6 +4,7 @@
 ## About
 ### A little project dealing with information retreival from PDF documents.
 For the time being I am only dealing with a single pdf at a time, eventually using this model for a batch procedure. I will upload all the major iteration changes I go through!
+My actual goal is to be able to extract marks from marksheets taken by students. These marksheets might be taken in various orientations and could involve many real world problems associated with them.
 
 ## Installation 
 ### 1. Dependencies
@@ -26,10 +27,23 @@ Someone suggested me to try using AI, and well API keys don't come cheap.
 In comes Groq. I stumbled across a reddit thread which convinced me to use Groq, and so I did.
 You can read the documentation at *https://console.groq.com/docs/quickstart* directly.
 
-you need to run ```export GROQ_API_KEY=<your-api-key-here>``` on your terminal of choice. Use ```set``` instead of ```export``` if you are on CMD. 
+You need to run ```export GROQ_API_KEY=<your-api-key-here>``` on your terminal of choice. Use ```set``` instead of ```export``` if you are on CMD. 
 I'd suggest using ```$env:GROQ_API_KEY="<your_api_key>"``` because this worked for me.
 
 ![image](https://github.com/user-attachments/assets/889e8a6c-f621-480f-8270-0157384a1af6)
 
 Many thanks to artworkjpm!
+
+The main purpose of Groq is to use llama for any correction of the bad output from Tesseract OCR. 
+This is where I hit a brick wall, as even with Groq the error bound was quite substantial. 
+
+I had to change my approach to the OCR itself.
+
+### 5. Google Cloud Vision API
+The strongest tool available to us - Google Cloud Vision API. This is famously used in image detection, mainly in Google Lens. So I had to give it a shot.
+as always, you can read the documentation and the guides over at *https://cloud.google.com/vision/docs/how-to*..
+
+Just like Groq, you need to set an environment variable ```GOOGLE_APPLICATION_CREDENTIALS``` . You can refer to ```Point 4```, or just simply use ```$env:GOOGLE_APPLICATION_CREDENTIALS="<your_api_key>"```.
+You also need to create a "Application Credential Secret Key" from Google Cloud, which will authenticate your use of the API. This is going to be a .json download. You will have to specify the .json path in ```credentials``` section of the code.
+
 
