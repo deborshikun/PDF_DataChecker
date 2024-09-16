@@ -9,8 +9,8 @@ from google.oauth2 import service_account
 import io
 
 # Set up Google Vision client
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'regal-wall-428907-e1-8e4643c33092.json'
-credentials = service_account.Credentials.from_service_account_file(r'C:\Users\Deborshi Chakrabarti\Desktop\Extract PDF Project\regal-wall-428907-e1-8e4643c33092.json')
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'<json file name for Secret Key>.json'
+credentials = service_account.Credentials.from_service_account_file(r'C:\Users\...\<json file name for Secret Key>.json') #Add path of .json file with filename.json 
 client = vision.ImageAnnotatorClient(credentials=credentials)
 
 # Groq Llama API client
