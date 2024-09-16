@@ -19,9 +19,29 @@ You can get the Windows Installer from *https://github.com/UB-Mannheim/tesseract
 Enter path to your pdf in ```pdf_path``` in the declaration outside.
 Add your Tesseract location to you PATH, or add your Tesseract PATH implicitly in the declared field.
 
+-------------------------------------------------
+
+#### Even with all this, I had trouble with finding meaningful output using Tesseract OCR. 
+An error I received a lot was ```Error during OSD detection: (1, 'Estimating resolution as 346 <could be any number here between ranges 0 to 400 according to my observations> Warning. Invalid resolution 0 dpi. Using 70```
+Only found 1 solution to the issue, which is more like a "bypass" rather than a cure. Thanks to Esraa anyhow!
+
+![image](https://github.com/user-attachments/assets/69b335cf-f524-4ca4-8b36-802ca6291acc)
+
+Let me share a sample input and output of one such case:
+
+Input:
+
+![image](https://github.com/user-attachments/assets/c23b91af-1404-42a1-9dd4-f08ee3280600)  
+
+Output:
+
+![image](https://github.com/user-attachments/assets/dd1677cf-e5ba-46cf-b687-3b3f9f682a40)
+
+Not too great right?
+
 ### 4. Groq
 Now before I started the project, I was convinced I could (obviously with the help of Github and Stackoverflow) get the PDF OCR running after using Tesseract. 
-But boy o' boy was I wrong. 
+I couldn't have possibly been more incorrect.
 Someone suggested me to try using AI, and well API keys don't come cheap. 
 
 In comes Groq. I stumbled across a reddit thread which convinced me to use Groq, and so I did.
@@ -45,5 +65,25 @@ as always, you can read the documentation and the guides over at *https://cloud.
 
 Just like Groq, you need to set an environment variable ```GOOGLE_APPLICATION_CREDENTIALS``` . You can refer to ```Point 4```, or just simply use ```$env:GOOGLE_APPLICATION_CREDENTIALS="<your_api_key>"```.
 You also need to create a "Application Credential Secret Key" from Google Cloud, which will authenticate your use of the API. This is going to be a .json download. You will have to specify the .json path in ```credentials``` section of the code.
+
+Now the help of both llama3-8b and Vision AI, let me share a sample IO:
+
+Input:
+
+![image](https://github.com/user-attachments/assets/28edf135-52b1-4e64-aa37-1ab1ce84a2a4)
+
+Output:
+
+![image](https://github.com/user-attachments/assets/e21cdfd2-2b78-4811-9f2a-6343332d74f2)
+
+#### That is almost Perfection! Now I just need to tweak the prompt a bit for Groq and we are golden!
+
+With this I conclude the "ExtractPDF" portion.
+
+-------------------------------------------------
+
+#ExcelMatching
+
+(still working on this hold on)
 
 
