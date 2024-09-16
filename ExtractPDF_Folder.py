@@ -32,10 +32,10 @@ def preprocess_image(img):
     
     try: #because Tessearct don't understand Orientation
         # Detect text orientation using Tesseract
-        osd = pytesseract.image_to_osd(rotated)
+        osd = pytesseract.image_to_osd(rotated,config='--psm 0 -c min_characters_to_try=5') #osd = pytesseract.image_to_osd(rotated ,config='--psm 0 -c min_characters_to_try=5')) can try this too for the invalid cases
         rotate_angle = int(re.search(r"Rotate: (\d+)", osd).group(1))
 
-        # Handle horizontal orientation (90 degrees or 270 degrees rotation)
+        # Handle 90 degrees or 270 degrees rotation
         if rotate_angle == 90:
             rotated = cv2.rotate(rotated, cv2.ROTATE_90_CLOCKWISE)
         elif rotate_angle == 270:
@@ -65,7 +65,7 @@ def extract_text_from_pdf(pdf_path):
     return full_text
 
 def process_folder(folder_path):
-    base_folder_name = os.path.basename(folder_path.rstrip("\\/"))  # Get the name of the folder
+    base_folder_name = os.path.basename(folder_path.rstrip("\\/"))  # Getting folder name
     output_folder = os.path.join(os.path.dirname(folder_path), f"{base_folder_name}_output")
     
     if not os.path.exists(output_folder):
@@ -84,7 +84,7 @@ def process_folder(folder_path):
                 file.write(text)
             print(f"Text has been extracted and saved to {output_file_path}")
             
-# Example usage
+# Test usage
 folder_path = r"C:\CERTIFICATES"  # Folder containing PDFs
-pytesseract.pytesseract.tesseract_cmd = r'D:\Program Files (Softwares)\Python\Tesseract\tesseract.exe'  # Tesseract PATH
+pytesseract.pytesseract.tesseract_cmd = r'D:\Program FilesSft\Tesseract\tesseract.exe'  # Tesseract PATH
 process_folder(folder_path)
