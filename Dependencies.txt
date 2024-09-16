@@ -3,3 +3,4 @@ opencv-python
 pytesseract 
 pillow
 groq
+google-cloud-vision
