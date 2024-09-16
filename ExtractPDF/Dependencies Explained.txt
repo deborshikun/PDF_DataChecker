@@ -1,0 +1,13 @@
+pymupdf 
+opencv-python 
+pytesseract 
+pillow
+---------------------------------
+1-4 are for OCR
+---------------------------------
+
+groq     //groq is for llama3
+requests //requests is for llama3.1   
+---------------------------------
+
+google-cloud-vision //for OCR using Vision API
