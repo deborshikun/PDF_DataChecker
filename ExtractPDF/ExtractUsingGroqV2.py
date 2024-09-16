@@ -1,3 +1,5 @@
+#In this version I manage to implement Google Vision API and Groq to extract text from a single PDF.
+
 import fitz
 from PIL import Image
 import cv2
@@ -13,7 +15,6 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'regal-wall-428907-e1-8e4643c330
 credentials = service_account.Credentials.from_service_account_file(r'C:\Users\Deborshi Chakrabarti\Desktop\Extract PDF Project\regal-wall-428907-e1-8e4643c33092.json')
 client = vision.ImageAnnotatorClient(credentials=credentials)
 
-# Groq Llama API client
 groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY"),)
 
 def pdf_to_images(pdf_path):
@@ -58,11 +59,10 @@ def extract_text_from_image(img):
     img.save(img_byte_arr, format='PNG')
     img_bytes = img_byte_arr.getvalue()
     
-    # Use Google Vision API to extract text
-    vision_image = vision.Image(content=img_bytes)
+    vision_image = vision.Image(content=img_bytes)     # Use Google Vision API to extract text
     response = client.text_detection(image=vision_image)
     
-    # Get the detected text
+    # Get text
     text = response.full_text_annotation.text if response.full_text_annotation else ''
     
     return text
@@ -91,14 +91,11 @@ def correct_extracted_text(text):
     )
     return response.choices[0].message.content
 
-# Main process
 pdf_path = r"C:\CERTIFICATES\1b7dcdc5-c945-4e4c-9782-183de85f711e.pdf"
 extracted_text = extract_text_from_pdf(pdf_path)
 
-# Correct the extracted text using Llama3-8b
-corrected_text = correct_extracted_text(extracted_text)
+corrected_text = correct_extracted_text(extracted_text) #Correct using llama3
 
-# Save corrected text
 base_name = os.path.splitext(os.path.basename(pdf_path))[0]
 output_file_path = os.path.join(os.path.dirname(pdf_path), f"{base_name}_corrected.txt")
 
