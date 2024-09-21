@@ -76,13 +76,9 @@ def extract_text_from_pdf(pdf_path):
 def correct_extracted_text(text):
     response = groq_client.chat.completions.create(
         messages=[
-        {"role": "system", "content": "You are a very helpful and assistant that is proficient in helping correct OCR text. You only answer the prompts to the point and do not add any extra notes.",
-        "role": "user", "content": f"""The following is a extracted text from a PDF, which mainly has character recognition errors. 
-        The entire PDF's are in English language, so you can try to translate the text to English and use your best judgement for the correction.
-        The only fields you will face are 'English' 'Physics' 'Chemistry' 'Mathematics' 'Computer Science' 'Bengali' 'Hindi' 'Biology', which could also be represented in some pdf's as 'BNGA' for Bengali, 'ENGS' for English, 'BIOS' for Biology, 'CHEM' for Chemistry, 'PHYS' for Physics, etc, and 'MATH' for Mathematics.
-        Do double check the characters which might look similar to another character (like K and R, 4 and 8, R and H).
-        ONLY give me the student name on 1st line, the registration number/Unique ID (UID)/Roll number on 2nd line, the subject name with the corresponding marks in the next lines.
-        Do not add any notes apart from what I asked.\n\n{text}"""}
+        {"role": "system","content": "You are a highly accurate assistant proficient in correcting OCR text. You only provide corrected text without adding any extra words, notes, or explanations.",
+        "role": "user","content": f"""The following is extracted text from a PDF, containing character recognition errors. The text is in English, but errors might involve subject names and student details. Correct these errors based on context, translating where needed. You will encounter fields like 'English', 'Physics', 'Chemistry', 'Mathematics', 'Computer Science', 'Bengali', 'Hindi', and 'Biology'. These could also appear as 'ENGS', 'PHYS', 'CHEM', 'MATH', 'BIOS', 'BNGA', etc. Correct similar-looking characters (e.g., 'K' and 'R', '4' and '8'). Only output the following, in the exact format below: \n\n1. Student Name (on the first line) \n2. Registration Number/UID/Roll Number (on the second line) \n3. Full subject names with corresponding TOTAL marks beside it. \n\nDo not add any extra words, explanations, or notes. Maximum marks can always be 100. Just the corrected output.\n\n **Output Format** \nStudent Name: [Corrected Student Name]\n UID: [Corrected UID or Registration Number or Roll Number] \n[Subject1 Name]: [Total Marks]\n[Subject2 Name]: [Total Marks]\n ... \n\n **Example Output** \nStudent Name: Akshay Kumar Singh\nRegistration Number/UID/Roll Number: 7044450\nEnglish: 78/100\nHindi: 84/100\nMathematics: 63/100\nPhysics: 50/100\nChemistry: 55/100\nBiology: 59/100.\n\n Do not change this format. Just replace the placeholders with the corrected information. Here's the text to correct:\n\n {text}"""
+        }
     ],
         model="llama3-8b-8192"
     )
