@@ -106,5 +106,24 @@ Enter the path to your excel file in ```excel_file_path``` in the declaration ou
 -------------------------------------------------
 
 ## Checker Part will be updated soon.
+## Extract_from_Output
+# Read Student Marks from a File
+
+This Python project contains a function named `read` that reads a student's information, including their name, UID, and subject marks, from a text file. It extracts this information using regular expressions and removes the first subject's marks from the list before printing the updated results.
+
+## Features
+- Extracts student name and UID from the file.
+- Extracts subject names and marks.
+- Removes the first element (subject mark) from the marks list.
+- Outputs the updated marks list.
+
+## Function Definition
+
+```python
+def read(file_path):
+ # Reads the file content and processes it to extract the student's name, UID, and subject marks.
+## Requirements
+
+-
 
 
