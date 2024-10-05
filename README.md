@@ -86,9 +86,25 @@ With this, I conclude the "ExtractPDF" portion.
 
 -------------------------------------------------
 
-## ExcelMatching
+# Excel Data Extraction
+### We want to create a data extractor  from Excel.
+-------------------------------------------------
 
-(still working on this hold on)
+## About
+#### A little project dealing with information retrieval from Excel documents.
+For the time being, I am only dealing with a single txt file at a time, eventually using this model for a batch procedure. I will upload all the major iteration changes I go through!
+My actual motive is to be able to extract marks from mark sheets from the database. These marks will be matched with the marksheet's marks provided as PDF 
 
+## Installation 
+#### 1. Dependencies
+Install Pandas and openpyxl using 
+```pip install pandas openpyxl ```
+
+#### 2. PATH
+Enter the path to your excel file in ```excel_file_path``` in the declaration outside.
+
+-------------------------------------------------
+
+## Checker Part will be updated soon.
 
 
