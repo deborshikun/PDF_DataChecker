@@ -68,7 +68,8 @@ The strongest tool available to us - Google Cloud Vision API. This is famously u
 as always, you can read the documentation and the guides over at *https://cloud.google.com/vision/docs/how-to*.
 
 Just like Groq, you need to set an environment variable ```GOOGLE_APPLICATION_CREDENTIALS``` . You can refer to ```Point 4```, or just simply use ```$env:GOOGLE_APPLICATION_CREDENTIALS="<your_api_key>"```.
-You also need to create an "Application Credential Secret Key" from Google Cloud, which will authenticate your use of the API. This is going to be a .json download. You will have to specify the .json path in the ```credentials``` section of the code.
+You also need to create an "Application Credential Secret Key" from Google Cloud, which will authenticate your API use. This is going to be a .json download. You must specify the .json path in the ```credentials``` section of the code.
+For more clarification on the process, you can refer to this video: *https://www.youtube.com/watch?v=TTeVtJNWdmI*. You can open your .json key and get the ```private_key_id```. This ID is to be used for the environment variable!
 
 Now with the help of both llama3-8b and Vision AI, let me share a sample IO:
 
