@@ -13,8 +13,8 @@ import re
 from difflib import get_close_matches
 
 # Set up Google Vision client
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'regal-wall-428907-e1-8e4643c33092.json'
-credentials = service_account.Credentials.from_service_account_file(r'C:\Users\Deborshi Chakrabarti\Desktop\Extract PDF Project\regal-wall-428907-e1-8e4643c33092.json')
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'<your .json filename>.json'
+credentials = service_account.Credentials.from_service_account_file(r'C:\Users\Deborshi Chakrabarti\Desktop\Extract PDF Project\<your .json filename>.json')
 client = vision.ImageAnnotatorClient(credentials=credentials)
 
 # Groq Llama API client
