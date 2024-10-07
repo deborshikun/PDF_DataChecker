@@ -87,48 +87,47 @@ With this, I conclude the "ExtractPDF" portion.
 
 -------------------------------------------------
 
-## Excel Data Extraction
-### We want to create a data extractor  from Excel.
--------------------------------------------------
+## Installation
 
-## Installation 
-#### 1. Dependencies
-Install Pandas Numpy and openpyxl using 
-```pip install pandas numpy openpyxl ```
+### 1) Dependencies
+Install the required libraries using the following command:
+```bash
+  pip install pandas numpy openpyxl
+```
+ ### 2)File Path
+ i)Specify the path to your Excel file in the variable excel_file_path in the code. 
 
-#### 2. PATH
-Enter the path to your excel file in ```excel_file_path``` in the declaration outside.
+ ii)Specify the path to the folder containing OCR-corrected output text files in the variable corrected_folder.
+ ### 3) Workflow and Flag Representation
+  For each OCR-corrected output text file, the script will:
 
-Enter the path to your OCR corrected output text files folder in ```corrected_folder``` in the declaration outside.
+i)Validate the NAME, REGISTRATION NUMBER, and SUBJECT MARKS by comparing them with the data in the Excel database.
 
-#### 3. Working Flow Flag Representation
-For each OCR corrected output text file we check the NAME, REGISTRATION NO., SUBJECT marks with the excel database.
-After checking it will generate a flag which will be stored in the Excel database and a discrepancy log file for each mismatched data.
+ii)Generate a flag based on the comparison results, which will be stored in the Excel database.
 
-Flag will be <= 4 digit number _ _ _ _ , these digit represents the following things:
+iii)Create a discrepancy log for any mismatched data.
+#### Flag Representation System
+The flag will be a 4-digit number ( _ _ _ _ ), where each digit represents the following:
 
-x x 0 0 : OCR contains less data due poor quality of the pdf.
+x x 0 0: OCR output contains less data due to the poor quality of the PDF.
 
-x x 0 1 : This means either data of the OCR text or in the Excel data the subject marks got interchanged so this requires a manual review.
+x x 0 1: Data mismatch—subject marks may have been interchanged between OCR output and Excel data. Requires manual review.
 
-x x 1 0 : This means PDF's marks and excel database's marks have matched.
+x x 1 0: Marks match between the PDF and Excel database.
 
-x 0 x x : This means PDF's student name and Excel database's student name have not matched.
+x 0 x x: The student name does not match between the OCR output and the Excel database.
 
-x 1 x x : This means PDF's student name and Excel database's student name have matched.
+x 1 x x: The student name matches between the OCR output and the Excel database.
 
-0 x x x : This means PDF's registration no and Excel database's registration no have not matched.
+0 x x x: The registration number does not match between the OCR output and the Excel database.
 
-1 x x x : This means PDF's registration no and Excel database's registration no have matched.
+1 x x x: The registration number matches between the OCR output and the Excel database.
+#### Example Flags:
+Flag = 1010: The registration number and marks match, but the student’s name does not match.
 
-Example :
+Flag = 1101: The registration number and student’s name match, but the marks may have been interchanged.
 
-Flag = 1010 means registration no and marks have matched but the student's name is not matching.
-
-Flag = 1101 means registration no and student's name have matched but the student's marks might be interchanged.
-
-Flag = 1110 means all data have matched.
-
+Flag = 1110: All data match (registration number, student name, and marks).
 
 -------------------------------------------------
 
