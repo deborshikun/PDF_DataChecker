@@ -2,11 +2,6 @@
 ### We want to create a data extractor  from Excel.
 -------------------------------------------------
 
-## About
-#### A little project dealing with information retrieval from Excel documents.
-For the time being, I am only dealing with a single txt file at a time, eventually using this model for a batch procedure. I will upload all the major iteration changes I go through!
-My actual motive is to be able to extract marks from mark sheets from the database. These marks will be matched with the marksheet's marks provided as PDF 
-
 ## Installation 
 #### 1. Dependencies
 Install Pandas Numpy and openpyxl using 
