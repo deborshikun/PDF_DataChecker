@@ -103,23 +103,23 @@ Enter the path to your OCR corrected output text files folder in ```corrected_fo
 
 #### 3. Working Flow Flag Representation
 For each OCR corrected output text file we check the NAME, REGISTRATION NO., SUBJECT marks with the excel database.
-After checking it will generate a flag which will be stored in the excel database and a discripency log file for each mismatched data.
+After checking it will generate a flag which will be stored in the Excel database and a discrepancy log file for each mismatched data.
 
 Flag will be <= 4 digit number _ _ _ _ , these digit represents the following things:
 
 x x 0 0 : OCR contains less data due poor quality of the pdf.
 
-x x 0 1 : This means either data of the OCR text or in the excel data the subject marks got interchanged so this requires a manual review.
+x x 0 1 : This means either data of the OCR text or in the Excel data the subject marks got interchanged so this requires a manual review.
 
-x x 1 0 : This means Pdf's marks and excel database's marks have matched.
+x x 1 0 : This means PDF's marks and excel database's marks have matched.
 
-x 0 x x : This means Pdf's student name and excel database's student name have not matched.
+x 0 x x : This means PDF's student name and Excel database's student name have not matched.
 
-x 1 x x : This means Pdf's student name and excel database's student name have matched.
+x 1 x x : This means PDF's student name and Excel database's student name have matched.
 
-0 x x x : This means Pdf's registration no and excel database's registration no have not matched.
+0 x x x : This means PDF's registration no and Excel database's registration no have not matched.
 
-1 x x x : This means Pdf's registration no and excel database's registration no have matched.
+1 x x x : This means PDF's registration no and Excel database's registration no have matched.
 
 Example :
 
