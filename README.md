@@ -12,8 +12,10 @@ My actual motive is to be able to extract marks from mark sheets taken by studen
 
 ## Installation 
 #### 1. Dependencies
-Install Dependencies using 
-```pip install -r Dependencies.txt```
+Install Dependencies using
+```bash
+pip install -r Dependencies.txt
+```
 
 #### 2. Download Tesseract OCR 
 Use the *https://github.com/tesseract-ocr/tesseract/releases* repository (You will need it LOCALLY on your system for OCR).
